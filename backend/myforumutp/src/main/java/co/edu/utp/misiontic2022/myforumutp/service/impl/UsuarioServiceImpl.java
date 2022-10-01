@@ -48,7 +48,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<UsuarioDto> getAllUsuarios() {
-        LOG.info("GET /all-usuarios");
+        LOG.info("GET / all-usuarios");
         //List<Usuario> myusers = usuarioRepository.findAll();
         //List<UsuarioDto> myusersDTO = usuarioMapper.toDtoList(usuarioRepository.findAll());
         return usuarioMapper.toDtoList(usuarioRepository.findAll());

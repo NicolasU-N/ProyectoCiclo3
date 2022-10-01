@@ -36,8 +36,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/").permitAll();
-                    auth.antMatchers("/user").hasRole("USER");
-                    auth.antMatchers("/admin").hasRole("ADMIN");
+                    //auth.antMatchers("/api/usuario/all").hasRole("USER");
+                    //auth.antMatchers("/api/usuario/{id}").hasRole("ADMIN");
                 })
                 .httpBasic(withDefaults())
                 .build();

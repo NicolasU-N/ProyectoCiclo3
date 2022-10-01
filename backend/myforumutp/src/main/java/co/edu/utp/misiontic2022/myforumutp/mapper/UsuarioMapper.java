@@ -13,7 +13,7 @@ public interface UsuarioMapper {
     @Mappings({
             @Mapping(target = "publicaciones", qualifiedByName = "NoUsuarioPublicacion"),
             @Mapping(target = "roles", qualifiedByName = "Rol"),
-//            @Mapping(target = "password", ignore = true)
+            @Mapping(target = "password", ignore = true)
     })
     UsuarioDto toDto(Usuario person);
 
