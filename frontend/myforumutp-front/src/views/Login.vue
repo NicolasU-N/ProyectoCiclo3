@@ -3,9 +3,10 @@
 </script>
 
 <template>
-  <img :src="image" />
-  <Navigation></Navigation>
+  
   <div class="login">
+    <img :src="image" />
+    <Navigation></Navigation>
     <h1 class="title">Login in the page</h1>
     <form action class="form" @submit.prevent="login">
       <label class="form-label" for="#email">Email:</label>
@@ -67,6 +68,7 @@ export default {
 <style lang="scss" scoped>
 .login {
   padding: 2rem;
+  text-align: center;
 }
 .title {
   text-align: center;

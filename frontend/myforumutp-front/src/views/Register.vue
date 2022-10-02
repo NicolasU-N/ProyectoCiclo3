@@ -2,9 +2,9 @@
   import image from "../assets/logo2.png"
 </script>
 <template>
-  <img :src="image" />
-  <Navigation></Navigation>
   <div class="register">
+    <img :src="image" />
+    <Navigation></Navigation>
     <h1 class="title">Sign Up</h1>
     <form action class="form" @submit.prevent="register">
       <label class="form-label" for="#email">Email:</label>
@@ -77,6 +77,7 @@ export default {
 <style lang="scss" scoped>
 .register {
   padding: 2rem;
+  text-align: center;
 }
 .title {
   text-align: center;
