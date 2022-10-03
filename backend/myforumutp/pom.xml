@@ -18,12 +18,10 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -63,6 +61,29 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt</artifactId>-->
+<!--            <version>0.9.1</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <!--<scope>runtime</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+            <version>0.11.5</version>
+            <!--<scope>runtime</scope>-->
+        </dependency>
     </dependencies>
 
     <build>
@@ -96,11 +117,11 @@
                         </path>
                         <!-- other annotation processors -->
                     </annotationProcessorPaths>
-<!--                    <compilerArgs>-->
-<!--                        <arg>-Xlint:all,-options,-path</arg>-->
-<!--                        <arg>-Amapstruct.defaultComponentModel=spring</arg>-->
-<!--                        <arg>-Amapstruct.unmappedTargetPolicy=ERROR</arg>-->
-<!--                    </compilerArgs>-->
+                    <!--                    <compilerArgs>-->
+                    <!--                        <arg>-Xlint:all,-options,-path</arg>-->
+                    <!--                        <arg>-Amapstruct.defaultComponentModel=spring</arg>-->
+                    <!--                        <arg>-Amapstruct.unmappedTargetPolicy=ERROR</arg>-->
+                    <!--                    </compilerArgs>-->
                 </configuration>
             </plugin>
         </plugins>

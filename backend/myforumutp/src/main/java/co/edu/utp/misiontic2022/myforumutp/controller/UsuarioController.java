@@ -45,9 +45,9 @@ public class UsuarioController {
 
     @PostMapping("/new")
     private ResponseEntity<?> saveUsuario(@Valid @RequestBody UsuarioDto usuarioDto) {
-        //response.clear();
+        response.clear();
         usuarioService.saveUsuario(usuarioDto);
-        response.put("message", "Save usuario successfully");
+        response.put("message", "Usuario creado exitosamente");
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

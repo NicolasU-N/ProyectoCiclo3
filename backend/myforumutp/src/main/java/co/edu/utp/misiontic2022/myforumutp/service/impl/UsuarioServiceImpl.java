@@ -10,6 +10,7 @@ import co.edu.utp.misiontic2022.myforumutp.util.MessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,6 +31,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private MessageUtil messageUtil;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -57,6 +61,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional
     @Override
     public void saveUsuario(UsuarioDto usuarioDto) {
+        usuarioDto.setPassword(passwordEncoder.encode(usuarioDto.getPassword()));
         Usuario person = usuarioMapper.toEntity(usuarioDto);
         usuarioRepository.save(person);
     }

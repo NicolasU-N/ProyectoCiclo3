@@ -2,11 +2,12 @@ package co.edu.utp.misiontic2022.myforumutp.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,10 +23,10 @@ public class Usuario {
     //@NotEmpty
     private String username;
 
-    @NotEmpty
+    @NotBlank
     private String password;
 
-    @NotEmpty
+    @NotBlank
     @Email
     @Column(unique = true)
     private String correo;
@@ -45,6 +46,8 @@ public class Usuario {
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles;
 
-    @CreatedDate
+    @CreationTimestamp
     private Date createdAt;
+
+    //@UpdateTimestamp
 }
