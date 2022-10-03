@@ -41,7 +41,7 @@
     <form action class="form" @submit.prevent="Crear">
       <label class="form-label" for="#Tema">Tema:</label>
       <input
-        v-model="message"
+        v-model="Tema"
         class="form-input"
         type="text"
         id="Tema"
@@ -49,7 +49,7 @@
         placeholder="Tema"
       />
       <label class="form-label" for="#contenido">Contenido:</label>
-      <textarea name="textarea" class="form-input" rows="10" cols="50" placeholder="Contenido" id="contenido"></textarea>
+      <textarea name="textarea" class="form-input" v-model="contenido" rows="10" cols="50" placeholder="Contenido" id="contenido"></textarea>
       <p v-if="error" class="error">
         Has introducido mal el formato de entrada.
       </p>
@@ -86,21 +86,10 @@
         methods: {
 
         async Crear() {
+            console.log(this.contenido)
             console.log(this.Tema)
         },
-          async login() {
-            try {
-              await auth.login(this.email, this.password);
-              const user = {
-                email: this.email,
-              };
-              auth.setUserLogged(user);
-              this.$router.push("/");
-            } catch (error) {
-              console.log(error);
-              this.error = true;
-            }
-          },
+        
         },
       };
       </script>
