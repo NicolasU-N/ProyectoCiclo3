@@ -1,5 +1,10 @@
+<script setup>
+  import image from "../assets/logo2.png"
+</script>
 <template>
   <div class="register">
+    <img :src="image" />
+    <Navigation></Navigation>
     <h1 class="title">Sign Up</h1>
     <form action class="form" @submit.prevent="register">
       <label class="form-label" for="#email">Email:</label>
@@ -11,7 +16,7 @@
         required
         placeholder="Email"
       />
-      <label class="form-label" for="#password">Password:</label>
+      <label class="form-label" for="#password">Contraseña:</label>
       <input
         v-model="password"
         class="form-input"
@@ -20,7 +25,7 @@
         placeholder="Password"
       />
       <label class="form-label" for="#password-repeat"
-        >Repite la contraeña:</label
+        >Repite la contraseña:</label
       >
       <input
         v-model="passwordRepeat"
@@ -31,10 +36,15 @@
       />
       <input class="form-submit" type="submit" value="Sign Up" />
     </form>
+    <p class="msg">
+      ¿Ya tienes cuenta?
+      <router-link to="/login">Ingresa</router-link>
+    </p>
   </div>
 </template>
   
 <script>
+import Navigation from "../components/Landingpage.vue";
 import auth from "../logic/auth";
 export default {
   data: () => ({
@@ -67,6 +77,7 @@ export default {
 <style lang="scss" scoped>
 .register {
   padding: 2rem;
+  text-align: center;
 }
 .title {
   text-align: center;
@@ -118,5 +129,9 @@ export default {
 .error {
   margin: 1rem 0 0;
   color: #ff4a96;
+}
+.msg {
+  margin-top: 3rem;
+  text-align: center;
 }
 </style>

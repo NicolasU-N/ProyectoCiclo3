@@ -1,8 +1,12 @@
-
-
+<script setup>
+  import image from "../assets/logo2.png" 
+</script>
 
 <template>
+  
   <div class="login">
+    <img :src="image" />
+    <Navigation></Navigation>
     <h1 class="title">Login in the page</h1>
     <form action class="form" @submit.prevent="login">
       <label class="form-label" for="#email">Email:</label>
@@ -14,7 +18,7 @@
         required
         placeholder="Email"
       />
-      <label class="form-label" for="#password">Password:</label>
+      <label class="form-label" for="#password">Contraseña:</label>
       <input
         v-model="password"
         class="form-input"
@@ -35,6 +39,7 @@
 </template>
   
 <script>
+import Navigation from "../components/Landingpage.vue";
 import auth from "../logic/auth.js";
 export default {
   data: () => ({
@@ -50,7 +55,7 @@ export default {
           email: this.email,
         };
         auth.setUserLogged(user);
-        this.$router.push("/");
+        this.$router.push("/landing");
       } catch (error) {
         console.log(error);
         this.error = true;
@@ -63,6 +68,7 @@ export default {
 <style lang="scss" scoped>
 .login {
   padding: 2rem;
+  text-align: center;
 }
 .title {
   text-align: center;
