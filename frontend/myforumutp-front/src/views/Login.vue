@@ -55,7 +55,7 @@ export default {
           email: this.email,
         };
         auth.setUserLogged(user);
-        this.$router.push("/");
+        this.$router.push("/landing");
       } catch (error) {
         console.log(error);
         this.error = true;
