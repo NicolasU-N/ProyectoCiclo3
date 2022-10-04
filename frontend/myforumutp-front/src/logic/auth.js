@@ -16,6 +16,6 @@ export default {
   },
   login(email, password) {
     const user = { email, password };
-    return axios.post(ENDPOINT_PATH + "login", user);
+    return axios.post("http://localhost:8080/auth/login", user);
   }
 };
