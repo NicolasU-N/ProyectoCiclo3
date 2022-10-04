@@ -59,6 +59,7 @@ export default {
         auth.setUserLogged(user);
         this.$router.push("/landing");
       } catch (error) {
+        this.$swal("ERROR", "Error inciando sesion", "error");
         console.log(error);
         this.error = true;
       }
