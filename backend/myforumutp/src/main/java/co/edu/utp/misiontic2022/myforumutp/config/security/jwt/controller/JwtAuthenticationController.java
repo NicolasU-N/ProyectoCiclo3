@@ -4,6 +4,7 @@ import co.edu.utp.misiontic2022.myforumutp.config.security.jwt.JwtProvider;
 import co.edu.utp.misiontic2022.myforumutp.config.security.jwt.dto.JwtDto;
 import co.edu.utp.misiontic2022.myforumutp.config.security.jwt.dto.LoginRequestDto;
 import co.edu.utp.misiontic2022.myforumutp.config.security.jwt.service.MyUserDetailsService;
+import co.edu.utp.misiontic2022.myforumutp.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,9 @@ public class JwtAuthenticationController {
 
     @Autowired
     private JwtProvider jwtProvider;
+
+    @Autowired
+    private UsuarioRepository userRepository;
 
     @PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDto loginRequestDto) throws Exception {
@@ -56,6 +60,9 @@ public class JwtAuthenticationController {
         response.put("status", httpStatus);
         response.put("code", httpStatus.value());
         response.put("message", message);
+        response.put("token", jwt);
+//        userRepository.findByCorreo()
+        response.put("username", jwtProvider.username(jwt));
 
         return new ResponseEntity<>(response, httpStatus);
     }
