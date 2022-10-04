@@ -39,6 +39,7 @@
 </template>
   
 <script>
+
 import Navigation from "../components/Landingpage.vue";
 import auth from "../logic/auth.js";
 export default {
@@ -50,9 +51,10 @@ export default {
   methods: {
     async login() {
       try {
-        await auth.login(this.email, this.password);
+        var response= await auth.login(this.email, this.password);
         const user = {
           email: this.email,
+          token: response.token
         };
         auth.setUserLogged(user);
         this.$router.push("/landing");
