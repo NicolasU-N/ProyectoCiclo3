@@ -36,41 +36,40 @@
     </div>
 </template>
 
-<script>
-    
-    import axios from "axios";
+<script>    
+    // import axios from "axios";
     import Cookies from "js-cookie";
     export default {
       data: () => ({
         name:""
       }),
       created() {
-        Cookies.set("userLogged", "userLogged");
-        this.name=Cookies.get("userLogged");
+        //Cookies.set("userLogged", "userLogged");
+        this.name = Cookies.get("userLogged");
         console.log(this.name);
-        axios
-        .get("http://localhost:8080/api/usuario/all")
-        .then((response) => {
-            console.log(response);
-        })
-      .catch((error) => {
-        console.log(error);
-      });
+      //   axios
+      //   .get("http://localhost:8080/api/usuario/all")
+      //   .then((response) => {
+      //       console.log(response);
+      //   })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
         },
       methods: {
-        async login() {
-          try {
-            await auth.login(this.email, this.password);
-            const user = {
-              email: this.email,
-            };
-            auth.setUserLogged(user);
-            this.$router.push("/");
-          } catch (error) {
-            console.log(error);
-            this.error = true;
-          }
-        },
+        // async login() {
+        //   try {
+        //     await auth.login(this.email, this.password);
+        //     const user = {
+        //       email: this.email,
+        //     };
+        //     auth.setUserLogged(user);
+        //     this.$router.push("/");
+        //   } catch (error) {
+        //     console.log(error);
+        //     this.error = true;
+        //   }
+        // },
       },
     };
     </script>

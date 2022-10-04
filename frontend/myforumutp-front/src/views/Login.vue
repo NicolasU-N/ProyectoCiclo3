@@ -54,9 +54,10 @@ export default {
         var response= await auth.login(this.email, this.password);
         const user = {
           email: this.email,
-          token: response.token
+          token: response.data.token
         };
         auth.setUserLogged(user);
+        // console.log(response);
         this.$router.push("/landing");
       } catch (error) {
         this.$swal("ERROR", "Error inciando sesion", "error");

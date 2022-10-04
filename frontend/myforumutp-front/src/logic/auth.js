@@ -5,8 +5,10 @@ const ENDPOINT_PATH = "http://localhost:8080/api";
 
 export default {
   setUserLogged(userLogged) {
-    Cookies.set("userLogged", userLogged);
+    Cookies.set("userLoggedToken", userLogged.token);
+    Cookies.set("userLogged", userLogged.email);
   },
+
   getUserLogged() {
     return Cookies.get("userLogged");
   },
