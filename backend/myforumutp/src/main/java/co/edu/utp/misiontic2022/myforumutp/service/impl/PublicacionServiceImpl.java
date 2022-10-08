@@ -1,11 +1,13 @@
 package co.edu.utp.misiontic2022.myforumutp.service.impl;
 
 import co.edu.utp.misiontic2022.myforumutp.dto.PublicacionDto;
+import co.edu.utp.misiontic2022.myforumutp.dto.SavePublicacionDto;
 import co.edu.utp.misiontic2022.myforumutp.exception.NotFoundException;
 import co.edu.utp.misiontic2022.myforumutp.mapper.PublicacionMapper;
 import co.edu.utp.misiontic2022.myforumutp.model.Publicacion;
 import co.edu.utp.misiontic2022.myforumutp.model.Usuario;
 import co.edu.utp.misiontic2022.myforumutp.repository.PublicacionRepository;
+import co.edu.utp.misiontic2022.myforumutp.repository.UsuarioRepository;
 import co.edu.utp.misiontic2022.myforumutp.service.PublicacionService;
 import co.edu.utp.misiontic2022.myforumutp.util.MessageUtil;
 import org.slf4j.Logger;
@@ -20,6 +22,9 @@ import java.util.Locale;
 public class PublicacionServiceImpl implements PublicacionService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UsuarioServiceImpl.class);
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private PublicacionRepository publicacionRepository;
@@ -49,8 +54,15 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
     @Override
-    public void savePublicacion(PublicacionDto publicacionDto) {
-        Publicacion publicacion = publicacionMapper.toEntity(publicacionDto);
+    public void savePublicacion(SavePublicacionDto savePublicacionDto) {
+        Usuario myuser = usuarioRepository.findByCorreo(savePublicacionDto.getUser_email()).orElseThrow(() -> new NotFoundException(messageUtil.getMessage("usuarioNotFound", null, Locale.getDefault())));
+        Publicacion publicacion = new Publicacion();
+        publicacion.setUsuario(myuser);
+        publicacion.setAsunto(savePublicacionDto.getAsunto());
+        publicacion.setContenido(savePublicacionDto.getContenido());
+        publicacion.setCreatedBy(myuser.getId());
+//        PublicacionDto publicacionDto = new PublicacionDto();
+//        Publicacion publicacion = publicacionMapper.toEntity(publicacionDto);
         publicacionRepository.save(publicacion);
     }
 

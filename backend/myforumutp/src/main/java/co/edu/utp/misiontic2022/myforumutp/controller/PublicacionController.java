@@ -2,6 +2,7 @@ package co.edu.utp.misiontic2022.myforumutp.controller;
 
 
 import co.edu.utp.misiontic2022.myforumutp.dto.PublicacionDto;
+import co.edu.utp.misiontic2022.myforumutp.dto.SavePublicacionDto;
 import co.edu.utp.misiontic2022.myforumutp.service.PublicacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,12 +44,11 @@ public class PublicacionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-
     @PostMapping("/new")
-    private ResponseEntity<?> savePublicacion(@Valid @RequestBody PublicacionDto publicacionDto) {
+    private ResponseEntity<?> savePublicacion(@Valid @RequestBody SavePublicacionDto savePublicacionDto) {
         //response.clear();
-        publicacionService.savePublicacion(publicacionDto);
-        response.put("message", "Save usuario successfully");
+        publicacionService.savePublicacion(savePublicacionDto);
+        response.put("message", "Save Publicacion successfully");
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -67,8 +67,5 @@ public class PublicacionController {
         response.put("message", "Publicacion deleted Successfully");
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
-
-
-
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -49,7 +50,7 @@ public class Publicacion {
     @ToString.Exclude
     private Set<Voto> votos;
 
-    @CreatedDate
+    @CreationTimestamp
     private Date createdAt;
 
     private Long createdBy;

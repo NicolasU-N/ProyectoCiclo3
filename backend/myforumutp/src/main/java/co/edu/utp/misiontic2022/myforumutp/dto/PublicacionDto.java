@@ -26,8 +26,6 @@ public class PublicacionDto {
 
     private UsuarioLightDto usuario;
 
-//    private Usuario usuario;
-
 //    private Set<VotoDto> votos;
 
     private Long likes;
