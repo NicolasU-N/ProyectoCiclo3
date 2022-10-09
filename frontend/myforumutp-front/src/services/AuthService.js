@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const ENDPOINT_PATH = "http://localhost:8080/api";
+const ENDPOINT_PATH = "http://localhost:8080";
 
 export default {
   setUserLogged(userLogged) {
@@ -10,14 +10,16 @@ export default {
   },
 
   getUserLogged() {
-    return Cookies.get("userLogged");
+    return Cookies.get("userLogged") || null;
   },
+
   register(correo, password) {
     const user = { correo, password };
-    return axios.post(ENDPOINT_PATH + "/usuario/new", user);
+    return axios.post(ENDPOINT_PATH + "/api/usuario/new", user);
   },
+
   login(email, password) {
     const user = { email, password };
-    return axios.post("http://localhost:8080/auth/login", user);
+    return axios.post(ENDPOINT_PATH + "/auth/login", user);
   }
 };

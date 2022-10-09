@@ -1,6 +1,7 @@
 <script setup>
-    import image from "../assets/logo2.png" 
+import image from "../assets/logo2.png" 
 </script>
+
 <template>
     <img :src="image" />
     <Navigation></Navigation>
@@ -8,5 +9,5 @@
 </template>
 
 <script>
-    import Navigation from "../components/Landingpage.vue";
+import Navigation from "../components/SimpleNavigation.vue";
 </script>
