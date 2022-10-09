@@ -8,7 +8,7 @@
         <li><a href='http://127.0.0.1:5173/landing'>Principal</a></li>
         <li><a class='dropdown-arrow' href='http://'>Foros</a>
           <ul class='sub-menus'>
-            <li><a href='http://'>Ver todos los foros</a></li>
+            <li><a href='http://127.0.0.1:5173/all'>Ver todos los foros</a></li>
             <li><a href='http://127.0.0.1:5173/create'>Crear un foro</a></li>
             <li><a href='http://'>Products 3</a></li>
             <li><a href='http://'>Products 4</a></li>
